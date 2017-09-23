@@ -1,0 +1,10 @@
+version: "2"
+
+services:
+  client:
+    build: ./onboarding-client
+    ports:
+      - 3000:3000
+    environment:
+      - API_SERVER_URL=http://server:3000
+      - PORT=3000
