@@ -3,21 +3,34 @@ const createService = require('feathers-bookshelf-service');
 const createModel = require('../../models/users.model');
 const hooks = require('./users.hooks');
 const filters = require('./users.filters');
+const validator = require('validator');
+const _ = require('lodash');
 
 module.exports = function () {
   const app = this;
   const bookshelf = app.get('bookshelfClient');
-
+ 
   createModel(app);
   
   const Model = bookshelf.Model.extend({
     tableName: 'users',
-    initialize: function() {
-      this.on('saving', this.validate, this);
-    },
-    validations: {
-      email: ['required', 'validEmail'],
-      username: ['required', 'alphaNumeric'],
+    rules: {
+      email: {
+        required: true,
+        validator: validator.isEmail
+      },
+      username: {
+        required: true,
+        validator: validator.isAlphanumeric
+      },
+      phone: {
+        required: false,
+        validator: validator.isMobilePhone('any')
+      },
+      zip: {
+        required: false,
+        validator: validator.isPostalCode('any')
+      },
     },
   });
 

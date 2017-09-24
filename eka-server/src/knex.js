@@ -4,7 +4,7 @@ const Bookshelf = require('bookshelf');
 module.exports = function () {
   const app = this;
   const { client, connection } = app.get('postgres');
-  const bookShelf = Bookshelf(knex({ client, connection }));
-
-  app.set('bookshelfClient', bookShelf);
+  const bookshelf = Bookshelf(knex({ client, connection }));
+  bookshelf.plugin(require('bookshelf-validation'));
+  app.set('bookshelfClient', bookshelf);
 };

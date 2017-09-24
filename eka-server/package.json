@@ -30,6 +30,8 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "bookshelf": "^0.10.4",
+    "bookshelf-validate": "^2.0.3",
+    "bookshelf-validation": "0.0.4",
     "compression": "^1.7.0",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
@@ -48,8 +50,10 @@
     "feathers-socketio": "^2.0.0",
     "helmet": "^3.8.1",
     "knex": "^0.13.0",
+    "lodash": "^4.17.4",
     "pg": "^7.3.0",
     "serve-favicon": "^2.4.4",
+    "validator": "^8.2.0",
     "winston": "^2.3.1"
   },
   "devDependencies": {
