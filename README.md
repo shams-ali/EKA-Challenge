@@ -2,24 +2,34 @@
 
 ## DEMO
 
-## SETUP
+## SETUP 
 
-$ brew install dockerformac
-$ brew install docker-compose
-$ git clone ...
-$ cd ...
-$ docker-compose up -d
-
-go to localhost:3000
+```bash
+# Install docker toolbox and virtualbox
+$ brew cask install docker-toolbox virtualbox
+# Create a default machine
+$ docker-machine create --driver "virtualbox" default
+# Start the docker daemon
+$ docker-machine start
+# configure terminal environment to allow for docker commands
+$ eval "$(docker-machine env)" 
+$ git clone https://github.com/shams-ali/EKA-Challenge.git
+$ cd Eka-Challenge
+# Build images, create containers, serve
+$ docker-compose build && docker-compose up -d
+# Will give you the ip address of your virtual machine
+$ docker-machine ip
+```
+Go to: `${docker-machine ip}:3000` in your browser
 
 ## TECHNOLOGIES USED
 
 ### Required
 * React
 * Redux
-* Webpack
+* Webpack@3
 * Babel
-* React-Router
+* React-Router@4
 * Node
 * Express
 * Bookshelf
@@ -70,6 +80,8 @@ OPTIONAL: Is your code working the way it should be? Write some tests using Nigh
   - TODO: Write tests
 
 OPTIONAL: Deploy your application on Heroku.
+  - I did not realize heroku does not support docker-compose, just docker, I would have to refactor a bit to get it working on heroku
+  - I have it deployed on digital ocean as I had some free credits available
 
 
 
