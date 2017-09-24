@@ -7,33 +7,29 @@ import WizardForm from 'components/Global/WizardForm/WizardForm.jsx';
 class ModalContainer extends Component {
   constructor(props) {
     super(props);
+
     this.removeThisModal = this.removeThisModal.bind(this);
-    console.log('## MODAL DATA AND PROPS:', this.props);
   }
 
   removeThisModal() {
     const { removeModal } = this.props;
-
     removeModal();
   }
 
   render() {
+    const { removeModal, type } = this.props;
+
     return (
       <div>
-        <WizardForm />
-        <button
-          type='button'
-          onClick={ this.removeThisModal }
-        >
-          close this modal
-        </button>
+        <WizardForm removeModal={ removeModal } type={ type } />
       </div>
     );
   }
 }
 
 ModalContainer.propTypes = {
-  removeModal: PropTypes.func,
+  removeModal: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default ModalContainer;

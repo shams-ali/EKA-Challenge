@@ -1,36 +1,34 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import validate from 'components/Global/FormHelpers/validate';
-import renderTextField from 'components/Global/FormHelpers/renderTextField';
-import normalizePhone from 'components/Global/FormHelpers/normalizePhone';
 
-const WizardFormSecondPage = props => {
-  const { handleSubmit, previousPage } = props;
+import validate from 'components/Global/FormHelpers/validate';
+import renderTextField from 'components/Global/FormHelpers/renderTextField.jsx';
+
+const WizardFormFirstPage = props => {
+  const { handleSubmit } = props;
   return (
     <form onSubmit={ handleSubmit }>
       <Field
-        name='firstName'
+        name='username'
         type='text'
         component={ renderTextField }
-        label='First Name'
+        label='Username'
       />
       <Field
-        name='lastName'
-        type='text'
+        name='password'
+        type='password'
         component={ renderTextField }
-        label='Last Name'
+        label='Password'
       />
       <Field
-        name='phone'
-        component={ renderTextField }
-        maxLength='64'
-        label='Phone*'
+        name='email'
         type='text'
-        normalize={ normalizePhone }
+        component={ renderTextField }
+        label='Email'
       />
       <div>
         <button type='submit' className='next'>
-          Next
+          Login
         </button>
       </div>
     </form>
@@ -42,4 +40,4 @@ export default reduxForm({
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   validate,
-})(WizardFormSecondPage);
+})(WizardFormFirstPage);

@@ -8,13 +8,14 @@ class Dashboard extends Component {
     this.addModal = this.addModal.bind(this);
   }
 
-  addModal() {
+  addModal(type) {
     modal.add(ModalContainer, {
       title: 'EKA Onboarding',
       size: 'large',
       closeOnOutsideClick: false,
       hideTitleBar: false,
       hideCloseButton: false,
+      type,
     });
   }
 
@@ -26,8 +27,8 @@ class Dashboard extends Component {
           This is a generic landing page
         </p>
         <hr />
-        <button onClick={ this.addModal }>Signup</button>
-        <button onClick={ this.addModal }>Update Information</button>
+        <button onClick={ () => this.addModal('signup') }>Sign Up</button>
+        <button onClick={ () => this.addModal('update') }>Update Information</button>
       </div>
     );
   }
