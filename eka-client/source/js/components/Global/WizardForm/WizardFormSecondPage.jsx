@@ -6,7 +6,7 @@ import renderTextField from 'components/Global/FormHelpers/renderTextField';
 import normalizePhone from 'components/Global/FormHelpers/normalizePhone';
 
 const WizardFormSecondPage = props => {
-  const { handleSubmit, previousPage } = props;
+  const { handleSubmit } = props;
   return (
     <form onSubmit={ handleSubmit }>
       <Field
@@ -40,7 +40,6 @@ const WizardFormSecondPage = props => {
 
 WizardFormSecondPage.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  previousPage: PropTypes.func.isRequired,
 };
 
 export default reduxForm({

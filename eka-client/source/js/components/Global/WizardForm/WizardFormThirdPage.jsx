@@ -55,8 +55,8 @@ WizardFormThirdPage.propTypes = {
 };
 
 export default reduxForm({
-  form: 'wizard', // Form name is same
+  form: 'wizard',
   destroyOnUnmount: false,
-  forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
+  forceUnregisterOnUnmount: true,
   validate,
 })(WizardFormThirdPage);

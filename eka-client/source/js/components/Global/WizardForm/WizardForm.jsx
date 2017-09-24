@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import client from 'components/Global/feathers';
-import WizardFormSignUpPage from './WizardFormSignUpPage';
-import WizardFormSignInPage from './WizardFormSignInPage';
-import WizardFormSecondPage from './WizardFormSecondPage';
-import WizardFormThirdPage from './WizardFormThirdPage';
+import WizardFormSignUpPage from 'components/Global/WizardForm/WizardFormSignUpPage';
+import WizardFormSignInPage from 'components/Global/WizardForm/WizardFormSignInPage';
+import WizardFormSecondPage from 'components/Global/WizardForm/WizardFormSecondPage';
+import WizardFormThirdPage from 'components/Global/WizardForm/WizardFormThirdPage';
 
 class WizardForm extends Component {
   constructor(props) {
