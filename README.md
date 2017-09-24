@@ -14,7 +14,7 @@ $ docker-machine start
 # configure terminal environment to allow for docker commands
 $ eval "$(docker-machine env)" 
 $ git clone https://github.com/shams-ali/EKA-Challenge.git
-$ cd Eka-Challenge
+$ cd EKA-Challenge
 # Build images, create containers, serve
 $ docker-compose build && docker-compose up -d
 # Will give you the ip address of your virtual machine
