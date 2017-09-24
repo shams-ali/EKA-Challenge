@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import WizardFormFirstPage from './WizardFormFirstPage';
 import WizardFormSecondPage from './WizardFormSecondPage';
 import WizardFormThirdPage from './WizardFormThirdPage';
@@ -29,7 +30,6 @@ class WizardForm extends Component {
         {page === 1 && <WizardFormFirstPage onSubmit={ this.nextPage } />}
         {page === 2 &&
           <WizardFormSecondPage
-            previousPage={ this.previousPage }
             onSubmit={ this.nextPage }
           />}
         {page === 3 &&
@@ -46,5 +46,4 @@ WizardForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default WizardForm
-;
+export default WizardForm;

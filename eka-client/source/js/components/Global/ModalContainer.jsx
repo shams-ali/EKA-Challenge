@@ -20,7 +20,6 @@ class ModalContainer extends Component {
   render() {
     return (
       <div>
-        <p>this is my modal</p>
         <WizardForm />
         <button
           type='button'

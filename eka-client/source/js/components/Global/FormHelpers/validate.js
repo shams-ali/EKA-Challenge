@@ -17,6 +17,16 @@ const validate = values => {
   if (!values.favoriteColor) {
     errors.favoriteColor = 'Required';
   }
+  if (!values.state) {
+    errors.state = 'Required';
+  } else if (!/^[A-Z]{2,2}$/i.test(values.state)) {
+    errors.state = 'Invalid State Abbreviations: ex: CA';
+  }
+  if (!values.zip) {
+    errors.zip = 'Required';
+  } else if (!/^[0-9]{5,5}$/i.test(values.zip)) {
+    errors.zip = 'Invalid Zip Code: ex: 70130';
+  }
   return errors;
 };
 

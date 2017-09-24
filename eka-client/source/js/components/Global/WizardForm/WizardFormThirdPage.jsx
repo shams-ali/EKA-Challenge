@@ -1,51 +1,40 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import validate from 'components/Global/FormHelpers/validate.js';
-
-const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
-
-const renderColorSelector = ({ input, meta: { touched, error } }) =>
-  (<div>
-    <select { ...input }>
-      <option value=''>Select a color...</option>
-      {colors.map(val =>
-        (<option value={ val } key={ val }>
-          {val}
-        </option>)
-      )}
-    </select>
-    {touched &&
-      error &&
-      <span>
-        {error}
-      </span>}
-  </div>);
+import renderTextField from 'components/Global/FormHelpers/renderTextField';
 
 const WizardFormThirdPage = props => {
   const { handleSubmit, pristine, previousPage, submitting } = props;
   return (
     <form onSubmit={ handleSubmit }>
-      <div>
-        <label>Favorite Color</label>
-        <Field name='favoriteColor' component={ renderColorSelector } />
-      </div>
-      <div>
-        <label htmlFor='employed'>Employed</label>
-        <div>
-          <Field
-            name='employed'
-            id='employed'
-            component='input'
-            type='checkbox'
-          />
-        </div>
-      </div>
-      <div>
-        <label>Notes</label>
-        <div>
-          <Field name='notes' component='textarea' placeholder='Notes' />
-        </div>
-      </div>
+      <Field
+        name='street'
+        component={ renderTextField }
+        maxLength='64'
+        label='Street*'
+        type='text'
+      />
+      <Field
+        name='city'
+        component={ renderTextField }
+        maxLength='64'
+        label='City*'
+        type='text'
+      />
+      <Field
+        name='state'
+        component={ renderTextField }
+        maxLength='2'
+        label='State*'
+        type='text'
+      />
+      <Field
+        name='zip'
+        component={ renderTextField }
+        maxLength='5'
+        label='Zip Code*'
+        type='text'
+      />
       <div>
         <button type='button' className='previous' onClick={ previousPage }>
           Previous

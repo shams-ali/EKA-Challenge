@@ -8,7 +8,6 @@ export default class App extends Component {
     return (
       <div className='App'>
         <Menu />
-
         <div className='Page'>
           <Routes />
         </div>

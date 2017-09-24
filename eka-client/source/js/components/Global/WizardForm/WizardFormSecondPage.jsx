@@ -1,44 +1,33 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import validate from 'components/Global/FormHelpers/validate.js';
-import renderField from 'components/Global/FormHelpers/renderField.jsx';
-
-const renderError = ({ meta: { touched, error } }) =>
-  touched && error
-    ? <span>
-      {error}
-    </span>
-    : false;
+import validate from 'components/Global/FormHelpers/validate';
+import renderTextField from 'components/Global/FormHelpers/renderTextField';
+import normalizePhone from 'components/Global/FormHelpers/normalizePhone';
 
 const WizardFormSecondPage = props => {
   const { handleSubmit, previousPage } = props;
   return (
     <form onSubmit={ handleSubmit }>
-      <Field name='email' type='email' component={ renderField } label='Email' />
-      <div>
-        <label>Sex</label>
-        <div>
-          <label>
-            <Field
-              name='sex'
-              component='input'
-              type='radio'
-              value='male'
-            />{' '}
-            Male
-          </label>
-          <label>
-            <Field
-              name='sex'
-              component='input'
-              type='radio'
-              value='female'
-            />{' '}
-            Female
-          </label>
-          <Field name='sex' component={ renderError } />
-        </div>
-      </div>
+      <Field
+        name='firstName'
+        type='text'
+        component={ renderTextField }
+        label='First Name'
+      />
+      <Field
+        name='lastName'
+        type='text'
+        component={ renderTextField }
+        label='Last Name'
+      />
+      <Field
+        name='phone'
+        component={ renderTextField }
+        maxLength='64'
+        label='Phone*'
+        type='text'
+        normalize={ normalizePhone }
+      />
       <div>
         <button type='button' className='previous' onClick={ previousPage }>
           Previous
@@ -52,8 +41,8 @@ const WizardFormSecondPage = props => {
 };
 
 export default reduxForm({
-  form: 'wizard', // Form name is same
+  form: 'wizard',
   destroyOnUnmount: false,
-  forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
+  forceUnregisterOnUnmount: true,
   validate,
 })(WizardFormSecondPage);

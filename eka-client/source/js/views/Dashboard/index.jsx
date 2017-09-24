@@ -10,7 +10,7 @@ class Dashboard extends Component {
 
   addModal() {
     modal.add(ModalContainer, {
-      title: 'This is my modal',
+      title: 'EKA Onboarding',
       size: 'large',
       closeOnOutsideClick: false,
       hideTitleBar: false,
@@ -26,7 +26,8 @@ class Dashboard extends Component {
           This is a generic landing page
         </p>
         <hr />
-        <button onClick={ this.addModal }>Add modal</button>
+        <button onClick={ this.addModal }>Signup</button>
+        <button onClick={ this.addModal }>Update Information</button>
       </div>
     );
   }

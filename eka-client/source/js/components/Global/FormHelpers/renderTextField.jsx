@@ -4,7 +4,7 @@ import TextField from 'material-ui/TextField';
 const renderTextField = ({
   input,
   label,
-  meta: { touched, error },
+  meta: { asyncValidating, touched, error },
   ...custom
 }) => (
   <TextField
