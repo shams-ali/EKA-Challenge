@@ -13,12 +13,11 @@ module.exports = function (app) {
         table.increments('id');
         table.string('firstName');
         table.string('lastName');
-        table.integer('phone');
         table.string('street');
         table.string('city');
         table.string('state');
+        table.integer('phone');        
         table.integer('zip');
-        table.string('text');
       }).then(
         () => console.log('Updated demographics table'),
         e => console.error('Error updating demographics table', e)
