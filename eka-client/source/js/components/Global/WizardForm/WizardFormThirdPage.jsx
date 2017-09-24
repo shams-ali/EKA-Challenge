@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import PropTypes from 'prop-types';
 import validate from 'components/Global/FormHelpers/validate.js';
 import renderTextField from 'components/Global/FormHelpers/renderTextField';
 
@@ -46,6 +47,13 @@ const WizardFormThirdPage = props => {
     </form>
   );
 };
+
+
+WizardFormThirdPage.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  previousPage: PropTypes.func.isRequired,
+};
+
 export default reduxForm({
   form: 'wizard', // Form name is same
   destroyOnUnmount: false,

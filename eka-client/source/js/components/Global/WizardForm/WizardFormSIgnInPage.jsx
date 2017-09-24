@@ -1,10 +1,10 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-
+import PropTypes from 'prop-types';
 import validate from 'components/Global/FormHelpers/validate';
 import renderTextField from 'components/Global/FormHelpers/renderTextField.jsx';
 
-const WizardFormFirstPage = props => {
+const WizardFormSignInPage = props => {
   const { handleSubmit } = props;
   return (
     <form onSubmit={ handleSubmit }>
@@ -35,9 +35,13 @@ const WizardFormFirstPage = props => {
   );
 };
 
+WizardFormSignInPage.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+};
+
 export default reduxForm({
   form: 'wizard',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   validate,
-})(WizardFormFirstPage);
+})(WizardFormSignInPage);

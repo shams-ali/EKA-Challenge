@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import PropTypes from 'prop-types';
 import validate from 'components/Global/FormHelpers/validate';
 import renderTextField from 'components/Global/FormHelpers/renderTextField';
 import normalizePhone from 'components/Global/FormHelpers/normalizePhone';
@@ -35,6 +36,11 @@ const WizardFormSecondPage = props => {
       </div>
     </form>
   );
+};
+
+WizardFormSecondPage.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  previousPage: PropTypes.func.isRequired,
 };
 
 export default reduxForm({

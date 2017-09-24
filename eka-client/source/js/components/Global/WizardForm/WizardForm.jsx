@@ -30,7 +30,7 @@ class WizardForm extends Component {
         this.setState({ page: this.state.page + 1 });
       } else {
         removeModal();
-        history.push('/about');
+        history.push('/success');
       }
     } catch (err) {
       console.error(err);
