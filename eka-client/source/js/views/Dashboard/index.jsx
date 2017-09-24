@@ -1,16 +1,35 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { modal } from 'react-redux-modal'; // The modal emitter
+import ModalContainer from 'components/Global/ModalContainer';
 
-const Dashboard = () => (
-  <div className='Dashboard'>
-    <h1>EKA Solutions</h1>
-    <p>
-      This is a generic landing page
-    </p>
+class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.addModal = this.addModal.bind(this);
+  }
 
-    <hr />
+  addModal() {
+    modal.add(ModalContainer, {
+      title: 'This is my modal',
+      size: 'large',
+      closeOnOutsideClick: false,
+      hideTitleBar: false,
+      hideCloseButton: false,
+    });
+  }
 
-  </div>
-);
+  render() {
+    return (
+      <div className='Dashboard'>
+        <h1>EKA Solutions</h1>
+        <p>
+          This is a generic landing page
+        </p>
+        <hr />
+        <button onClick={ this.addModal }>Add modal</button>
+      </div>
+    );
+  }
+}
 
 export default Dashboard;
