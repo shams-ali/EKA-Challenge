@@ -15,10 +15,10 @@ module.exports = {
   before: {
     all: [],
     find: [],
-    get: [],
+    get: [ ...restrict ],
     create: [ hashPassword() ],
-    update: [ hashPassword() ],
-    patch: [ hashPassword() ],
+    update: [ ...restrict, hashPassword() ],
+    patch: [ ...restrict, hashPassword() ],
     remove: [ ...restrict ]
   },
 

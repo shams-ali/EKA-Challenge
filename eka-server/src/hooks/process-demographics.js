@@ -1,7 +1,6 @@
 module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
   return function processDemographics (hook) {
 
-    // TODO: Destructure and add better validations
     const user = hook.params.user;
 
     const firstName = hook.data.firstName
