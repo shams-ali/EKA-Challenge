@@ -8,24 +8,30 @@ const WizardFormSignInPage = props => {
   const { handleSubmit } = props;
   return (
     <form onSubmit={ handleSubmit }>
-      <Field
-        name='username'
-        type='text'
-        component={ renderTextField }
-        label='Username'
-      />
-      <Field
-        name='password'
-        type='password'
-        component={ renderTextField }
-        label='Password'
-      />
-      <Field
-        name='email'
-        type='text'
-        component={ renderTextField }
-        label='Email'
-      />
+      <div>
+        <Field
+          name='username'
+          type='text'
+          component={ renderTextField }
+          label='Username'
+        />
+      </div>
+      <div>
+        <Field
+          name='email'
+          type='text'
+          component={ renderTextField }
+          label='Email'
+        />
+      </div>
+      <div>
+        <Field
+          name='password'
+          type='password'
+          component={ renderTextField }
+          label='Password'
+        />
+      </div>
       <div>
         <button type='submit' className='next'>
           Login

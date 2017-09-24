@@ -9,26 +9,32 @@ const WizardFormSecondPage = props => {
   const { handleSubmit } = props;
   return (
     <form onSubmit={ handleSubmit }>
-      <Field
-        name='firstName'
-        type='text'
-        component={ renderTextField }
-        label='First Name'
-      />
-      <Field
-        name='lastName'
-        type='text'
-        component={ renderTextField }
-        label='Last Name'
-      />
-      <Field
-        name='phone'
-        component={ renderTextField }
-        maxLength='64'
-        label='Phone*'
-        type='text'
-        normalize={ normalizePhone }
-      />
+      <div>
+        <Field
+          name='firstName'
+          type='text'
+          component={ renderTextField }
+          label='First Name'
+        />
+      </div>
+      <div>
+        <Field
+          name='lastName'
+          type='text'
+          component={ renderTextField }
+          label='Last Name'
+        />
+      </div>
+      <div>
+        <Field
+          name='phone'
+          component={ renderTextField }
+          maxLength='64'
+          label='Phone*'
+          type='text'
+          normalize={ normalizePhone }
+        />
+      </div>
       <div>
         <button type='submit' className='next'>
           Next

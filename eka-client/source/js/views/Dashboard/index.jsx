@@ -11,7 +11,7 @@ class Dashboard extends Component {
   addModal(type) {
     modal.add(ModalContainer, {
       title: 'EKA Onboarding',
-      size: 'large',
+      size: 'medium',
       closeOnOutsideClick: false,
       hideTitleBar: false,
       hideCloseButton: false,
