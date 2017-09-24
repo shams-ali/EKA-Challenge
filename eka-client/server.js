@@ -6,8 +6,8 @@ const path = require('path');
 const proxy = require('express-http-proxy');
 
 const app = express();
-const PORT = process.env.PORT;
-const API_SERVER_URL = process.env.API_SERVER_URL;
+const PORT = process.env.PORT || 80;
+const API_SERVER_URL = process.env.API_SERVER_URL || 'http://138.197.13.225:3030';
 
 app.use(express.static(path.join(__dirname, 'build')));
 
