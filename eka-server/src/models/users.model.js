@@ -14,6 +14,13 @@ module.exports = function (app) {
         table.string('email').unique();
         table.string('username').unique();
         table.string('password');
+        table.string('firstName');
+        table.string('lastName');
+        table.string('street');
+        table.string('city');
+        table.string('state');
+        table.integer('phone');        
+        table.integer('zip');
       })
         .then(
           () => console.log('Updated users table'),
