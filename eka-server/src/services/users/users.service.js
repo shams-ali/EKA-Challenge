@@ -21,15 +21,31 @@ module.exports = function () {
       },
       username: {
         required: true,
-        validator: validator.isAlphanumeric
+        validator: _.isString
       },
-      phone: {
-        required: false,
-        validator: validator.isMobilePhone('any')
+      password: {
+        required: true,
+        validator: _.isString        
       },
       zip: {
         required: false,
-        validator: validator.isPostalCode('any')
+        validator: v => validator.isPostalCode(v, 'any')
+      },
+      city: {
+        required: false,
+        validator: validator.isAlpha
+      },
+      state: {
+        required: false,
+        validator: validator.isAlpha
+      },
+      firstName: {
+        required: false,
+        validator: validator.isAlpha
+      },
+      lastName: {
+        required: false,
+        validator: validator.isAlpha
       },
     },
   });

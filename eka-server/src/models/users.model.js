@@ -10,7 +10,7 @@ module.exports = function (app) {
   bookshelf.knex.schema.hasTable('users').then(exists => {
     if(!exists) {
       bookshelf.knex.schema.createTable('users', table => {
-        table.increments('id').primary();
+        table.increments('id');
         table.string('email').unique();
         table.string('username').unique();
         table.string('password');
