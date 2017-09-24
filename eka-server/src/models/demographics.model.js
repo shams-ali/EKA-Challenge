@@ -11,6 +11,13 @@ module.exports = function (app) {
     if(!exists) {
       db.schema.createTable('demographics', table => {
         table.increments('id');
+        table.string('firstName');
+        table.string('lastName');
+        table.integer('phone');
+        table.string('street');
+        table.string('city');
+        table.string('state');
+        table.integer('zip');
         table.string('text');
       }).then(
         () => console.log('Updated demographics table'),
