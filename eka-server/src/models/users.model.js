@@ -19,7 +19,7 @@ module.exports = function (app) {
         table.string('street');
         table.string('city');
         table.string('state');
-        table.integer('phone');        
+        table.string('phone');        
         table.integer('zip');
       })
         .then(
