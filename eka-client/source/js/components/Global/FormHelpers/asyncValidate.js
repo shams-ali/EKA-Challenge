@@ -1,12 +1,22 @@
 import axios from 'axios';
+import client from 'components/Global/feathers';
 
-const asyncValidate = ({ email }) => {
-  return axios.get(`/api/users?email=${ email }`)
-    .then(({ data: { data } }) => (data.length ? { email: 'This email already exists' } : null))
-    .catch((err) => {
-      console.error(err);
-      return { email: 'There was an internal error' };
-    });
+const asyncValidate = ({ email, username }) => {
+  const errors = {};
+  return client.service('users').find({ query: { email } })
+    .then(({ data }) => {
+      if (data.length) {
+        errors.email = 'This email already exists';
+      }
+      return client.service('users').find({ query: { username } });
+    })
+    .then(({ data }) => {
+      if (data.length) {
+        errors.username = 'This username already exists';
+      }
+      return errors;
+    })
+    .catch((error) => console.error(error));
 };
 
 export default asyncValidate;
