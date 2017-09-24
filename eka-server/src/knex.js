@@ -1,9 +1,10 @@
 const knex = require('knex');
+const Bookshelf = require('bookshelf');
 
 module.exports = function () {
   const app = this;
   const { client, connection } = app.get('postgres');
-  const db = knex({ client, connection });
+  const bookShelf = Bookshelf(knex({ client, connection }));
 
-  app.set('knexClient', db);
+  app.set('bookshelfClient', bookShelf);
 };

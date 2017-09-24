@@ -1,12 +1,27 @@
 // Initializes the `users` service on path `/users`
-const createService = require('feathers-knex');
+const createService = require('feathers-bookshelf-service');
 const createModel = require('../../models/users.model');
 const hooks = require('./users.hooks');
 const filters = require('./users.filters');
 
 module.exports = function () {
   const app = this;
-  const Model = createModel(app);
+  const bookshelf = app.get('bookshelfClient');
+
+  createModel(app);
+  
+  const Model = bookshelf.Model.extend({
+    tableName: 'users',
+    initialize: function() {
+      this.on('saving', this.validate, this);
+    },
+    validations: {
+      email: ['required', 'validEmail'],
+      username: ['required', 'alphaNumeric'],
+    },
+  });
+
+
   const paginate = app.get('paginate');
 
   const options = {

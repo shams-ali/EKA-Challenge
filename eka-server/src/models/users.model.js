@@ -5,12 +5,12 @@
 // See http://knexjs.org/
 // for more of what you can do here.
 module.exports = function (app) {
-  const db = app.get('knexClient');
+  const bookshelf = app.get('bookshelfClient');
 
-  db.schema.hasTable('users').then(exists => {
+  bookshelf.knex.schema.hasTable('users').then(exists => {
     if(!exists) {
-      db.schema.createTable('users', table => {
-        table.increments('id');
+      bookshelf.knex.schema.createTable('users', table => {
+        table.increments('id').primary();
         table.string('email').unique();
         table.string('username').unique();
         table.string('password');
@@ -29,5 +29,5 @@ module.exports = function (app) {
     }
   });
 
-  return db;
+  return bookshelf;
 };
