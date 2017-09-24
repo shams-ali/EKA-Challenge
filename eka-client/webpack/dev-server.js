@@ -1,10 +1,13 @@
 const paths = require('./config').paths;
 const IS_PRODUCTION = require('./config').IS_PRODUCTION;
 
+const PORT = process.env.PORT || 3000;
+const API_SERVER_URL = process.env.API_SERVER_URL;
+
 const devServer = {
   contentBase: IS_PRODUCTION ? paths.build : paths.source,
   historyApiFallback: true,
-  port: 3000,
+  port: PORT,
   compress: IS_PRODUCTION,
   inline: !IS_PRODUCTION,
   hot: !IS_PRODUCTION,
@@ -22,6 +25,15 @@ const devServer = {
     version: false,
     warnings: true,
     colors: true,
+  },
+  proxy: {
+    '/api/*': {
+      target: API_SERVER_URL,
+      changeOrigin: true,
+      pathRewrite: {
+        '^/api': '',
+      },
+    },
   },
 };
 

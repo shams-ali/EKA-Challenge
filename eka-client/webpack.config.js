@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const webpack = require('webpack');
 const path = require('path');
 
@@ -13,7 +15,6 @@ const devServer = require('./webpack/dev-server').devServer;
 
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 
 // Default client app entry file
 const entry = [

@@ -1,9 +1,7 @@
-import io from 'socket.io-client';
 import rest from 'feathers-rest/client';
 import superagent from 'superagent';
 import feathers from 'feathers/client';
 import hooks from 'feathers-hooks';
-import socketio from 'feathers-socketio/client';
 import authentication from 'feathers-authentication-client';
 
 const client = feathers();

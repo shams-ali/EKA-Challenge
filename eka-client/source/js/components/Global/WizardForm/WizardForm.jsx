@@ -48,8 +48,7 @@ class WizardForm extends Component {
         username,
       });
       const { userId } = await client.passport.verifyJWT(accessToken);
-      const { user } = await client.service('users').get(userId);
-
+      const user = await client.service('users').get(userId);
       client.set('user', user);
       this.setState({ page: page + 1 });
     } catch (err) {
