@@ -23,8 +23,9 @@ class Dashboard extends Component {
     return (
       <div className='Dashboard'>
         <h1>EKA Solutions</h1>
+        <h2>A SMARTER FREIGHT PLATFORM</h2>
         <p>
-          This is a generic landing page
+        Brokers and Shippers deserve the best tools to excel. EKA on-demand end-to-end Transportation Management System (TMS) Cloud offers powerful tracking, data, and automation to help grow your business, increase your margins, and add value for your customers.
         </p>
         <hr />
         <button onClick={ () => this.addModal('signup') }>Sign Up</button>

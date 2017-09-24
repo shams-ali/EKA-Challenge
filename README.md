@@ -40,6 +40,7 @@ Go to: `${docker-machine ip}:3000` in your browser
 * feathers
 * docker/docker-compose
 * passport
+* digital ocean
 
 ## SPECIFICS
 1. When the User requests the homepage, the user is taken to a generic landing page. On the landing page, there should be a button that redirects the user to the FIRST form of the onboarding process.
@@ -72,7 +73,7 @@ OPTIONAL: Passwords should never be stored in databases unencrypted. Encrypt the
 OPTIONAL: Oops. I'm a silly user. I finished Form2 but realized that I just gave you the wrong information! Devise a way for users to move back to forms that they have previously completed in order to modify their information.
   * eg. I finished Form1 and am now on Form2. I should be able to go back to Form1 and change my information there. I should _not_ be able to move forward to Form3 without first completing Form2.
   - Almost complete
-  - Can go back to page 2 to edit but not to page one due to asyncValidation. 
+  - Can go back to form 2 to edit but not to page one due to asyncValidation. 
   - TODO: Will need to refactor a bit to edit page 1
 
 OPTIONAL: Is your code working the way it should be? Write some tests using Nighwatch.js that covers the full onboarding process.
