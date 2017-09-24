@@ -33,7 +33,7 @@ module.exports = function () {
       },
       city: {
         required: false,
-        validator: validator.isAlpha
+        validator: _.isString
       },
       state: {
         required: false,
