@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const asyncValidate = ({ email }) => {
-  return axios.get(`http://localhost:3030/users?email=${ email }`)
+  return axios.get(`/api/users?email=${ email }`)
     .then(({ data: { data } }) => (data.length ? { email: 'This email already exists' } : null))
     .catch((err) => {
       console.error(err);
