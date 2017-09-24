@@ -12,6 +12,7 @@ class WizardForm extends Component {
     super(props);
     this.state = {
       page: 1,
+      serverError: null,
     };
 
     this.nextPage = this.nextPage.bind(this);
@@ -27,13 +28,14 @@ class WizardForm extends Component {
       const { id } = client.get('user');
       await client.service('users').patch(id, { street, city, state, zip, firstName, lastName, phone });
       if (page === 2) {
-        this.setState({ page: this.state.page + 1 });
+        this.setState({ serverError: null, page: this.state.page + 1 });
       } else {
         removeModal();
         history.push('/success');
       }
-    } catch (err) {
-      console.error(err);
+    } catch (serverError) {
+      console.error(serverError);
+      this.setState({ serverError });
     }
   }
 
@@ -50,9 +52,10 @@ class WizardForm extends Component {
       const { userId } = await client.passport.verifyJWT(accessToken);
       const user = await client.service('users').get(userId);
       client.set('user', user);
-      this.setState({ page: page + 1 });
-    } catch (err) {
-      console.error(err);
+      this.setState({ error: null, page: page + 1 });
+    } catch (serverError) {
+      console.error(serverError);
+      this.setState({ serverError });
     }
   }
 
@@ -69,32 +72,36 @@ class WizardForm extends Component {
       const user = await client.service('users').get(userId);
       client.set('user', user);
 
-      this.setState({ page: page + 1 });
-    } catch (err) {
-      console.error(err);
+      this.setState({ serverError: null, page: page + 1 });
+    } catch (serverError) {
+      console.error(serverError);
+      this.setState({ serverError });
     }
   }
 
   previousPage() {
-    this.setState({ page: this.state.page - 1 });
+    this.setState({ serverError: null, page: this.state.page - 1 });
   }
 
   render() {
-    const { page } = this.state;
+    const { page, serverError } = this.state;
     const { type } = this.props;
     return (
       <div>
-        {page === 1 && type === 'signup' && <WizardFormSignUpPage onSubmit={ this.signUp } />}
-        {page === 1 && type === 'update' && <WizardFormSignInPage onSubmit={ this.signIn } />}
+        {page === 1 && type === 'signup' && <WizardFormSignUpPage onSubmit={ this.signUp } serverError={ serverError } />}
+        {page === 1 && type === 'update' && <WizardFormSignInPage onSubmit={ this.signIn } serverError={ serverError } />}
         {page === 2 &&
           <WizardFormSecondPage
             onSubmit={ this.nextPage }
+            serverError={ serverError }
           />}
         {page === 3 &&
           <WizardFormThirdPage
             previousPage={ this.previousPage }
             onSubmit={ this.nextPage }
+            serverError={ serverError }
           />}
+        { serverError && <div>{serverError.message}</div> }
       </div>
     );
   }
