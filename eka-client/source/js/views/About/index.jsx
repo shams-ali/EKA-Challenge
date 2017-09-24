@@ -4,7 +4,7 @@ export default class About extends Component {
   render() {
     return (
       <div className='About'>
-        <h1>About Marvin</h1>
+        <h1>About EKA Solutions</h1>
 
         <p>
           Marvin is internal project by <a href='https://work.co'>Work & Co</a>.

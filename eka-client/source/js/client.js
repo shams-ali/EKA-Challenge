@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import 'babel-polyfill';
 
 import configureStore from 'config/store';
@@ -21,7 +23,9 @@ const render = Component => {
   ReactDOM.render(
     <AppContainer>
       <Provider store={ store }>
-        <Component />
+        <MuiThemeProvider muiTheme={ getMuiTheme() }>
+          <Component />
+        </MuiThemeProvider>
       </Provider>
     </AppContainer>,
     document.getElementById('root')
